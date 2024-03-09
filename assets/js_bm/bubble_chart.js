@@ -176,25 +176,27 @@ var agecatCenters = { // Center locations of the bubbles.
     'Stimmt ganz': 150,
     'Stimmt eher': 320,
     'Stimmt eher nicht': 600,
-    'Stimmt gar nicht': 900,
+    'Stimmt gar nicht': 900
     
   };
     // Sechster Button: Instagramvertrauen
     
   var instaCenters = { // Center locations of the bubbles. 
-    '1': { x: 330, y: height / 1.9  },
-    '2': { x: 450, y: height / 1.9  },
-    '3': { x: 600, y: height / 2  },
-    '4': { x: 750, y: height / 2  }
+    '1': { x: 320, y: height / 1.9  },
+    '2': { x: 430, y: height / 1.9  },
+    '3': { x: 550, y: height / 2  },
+    '4': { x: 670, y: height / 2  },
+    '5': { x: 770, y: height / 2  }
     
   };
 
   var instaTitleX = {  // X locations of the year titles.
-    'Ja': 150,
-    'eher Ja': 320,
-    'eher Nein': 600,
-    'Nein': 900,
-    
+    'Ja': 150 ,
+    'eher Ja': 320  ,
+    'eher Nein': 570,
+    'Nein': 750,
+    'Weiss nicht': 960
+     
   };
        
     
@@ -265,8 +267,9 @@ var agecatCenters = { // Center locations of the bubbles.
           
         sorgen: d.sorgenbarometerkat, // Sorgen import 1,2,3,4
           sorgentext: d.sorgenbarometer, // Sorgen import Texte
-          insta: d. instagramvertrauenkat, // Insta import 1,2,3,4
-          insta: d. instagramvertrauenkat, // Insta import Text
+          
+          insta: d.instagramvertrauenkat, // Insta import 1,2,3,4
+          instatext: d.instagramvertrauen, // Insta import Text
         
         x: Math.random() * 900,
         y: Math.random() * 800
@@ -720,10 +723,9 @@ function moveToAgecat(alpha) {
       splitBubblesintoSex();
     } else if (displayName === 'screentime') {
       splitBubblesintoScreentime();
-         } else if (displayName === 'sorgen') {
-      splitBubblesintoInsta();
-              splitBubblesintoInstagramvertrauen();
-         } else if (displayName === 'insta') {
+     } else if (displayName === 'sorgen') {
+      splitBubblesintoSorgen();
+    } else if (displayName === 'insta') {
       splitBubblesintoInsta();
     } else {
       groupBubbles();
@@ -755,7 +757,7 @@ function moveToAgecat(alpha) {
 
   var fillColor = d3.scale.ordinal()
     .domain(['1','2','3', '4','5','6'])
-    .range(['#F7CAD0', '#ff006e', '#48CAE4', '#0096C7','#023E8A','#03045E']);
+    .range(['#f8edeb', '#fad2e1', '#FFB6C1', '#90e0ef','#c77dff','#7400b8']);
 
   /* Tooltip-Funktion*/
   function showDetail(d) {
@@ -771,12 +773,11 @@ function moveToAgecat(alpha) {
                   '<span class="name">Bildschirmzeit: </span><span class="value">' +
                   d.screentime +
                   '</span><br/>' +
-        
                   '<span class="name">"Ich mache mir Sorgen um meine Daten": </span><span class="value">' +
                   d.sorgentext +
                   '</span><br/>' +
-                  '<span class="name">"Ich Vertraue Insta": </span><span class="value">' +
-                  d.instagramvertrauen +
+                  '<span class="name">"Ich vertraue Instagram:": </span><span class="value">' +
+                  d.instatext +
                   '</span><br/>' +
         
         
